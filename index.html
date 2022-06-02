@@ -12,7 +12,35 @@
     <title>Etch a Sketch</title>
   </head>
   <body>
-    <div class="title">Hola</div>
+    <div class="flex-container">
+      <div class="title"><h1>Etch a Sketch</h1></div>
+      <div class="mode">
+        Mode: Not coloring. Click on the board to start coloring.
+      </div>
+      <div class="content">
+        <div class="board"></div>
+        <div class="buttons">
+          <button class="eraser">
+            <i class="fa-solid fa-eraser"></i>
+          </button>
+          <button onclick="resetBoard()">Reset</button>
+          <div class="color-pick">
+            <label for="favcolor">Select color:</label>
+            <input type="color" id="favcolor" name="favcolor" value="#000000" />
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Size of Board"
+            value="16"
+            onchange="changeSize(this.value)"
+          />
+          <button>Set Size</button>
+        </div>
+        <div class="error">Input must be between 2 and 100</div>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
