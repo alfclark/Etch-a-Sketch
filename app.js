@@ -1,6 +1,10 @@
 let click = false;
 let colorSelection = document.getElementById("favcolor");
 let eraser = document.querySelector(".eraser");
+const sizeValue = document.getElementById("sizeValue");
+const sizeSlider = document.getElementById("sizeSlider");
+let defaultSize = 16;
+let size = defaultSize;
 
 colorSelection.addEventListener("input", () => {
   return colorSelection.value;
@@ -9,6 +13,21 @@ colorSelection.addEventListener("input", () => {
 eraser.addEventListener("click", () => {
   colorSelection.value = "#FFFFFF";
 });
+
+sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
+sizeSlider.onchange = (e) => changeSize(e.target.value);
+
+function updateSizeValue(value) {
+  sizeValue.innerHTML = `${value} x ${value}`;
+}
+
+function setCurrentSize(newSize) {
+  currentSize = newSize;
+}
+
+function changeSize(value) {
+  setCurrentSize(value);
+}
 
 function createBoard(size) {
   let board = document.querySelector(".board");
@@ -22,7 +41,6 @@ function createBoard(size) {
     let square = document.createElement("div");
     square.addEventListener("mouseover", coloring);
     square.style.backgroundColor = "white";
-    square.style.border = "solid gray 1px";
     board.insertAdjacentElement("beforeend", square);
   }
 }
@@ -30,12 +48,7 @@ function createBoard(size) {
 createBoard(16);
 
 function changeSize(input) {
-  if (input >= 2 && input <= 100) {
-    document.querySelector(".error").style.display = "none";
-    createBoard(input);
-  } else {
-    document.querySelector(".error").style.display = "flex";
-  }
+  createBoard(input);
 }
 
 function coloring() {
