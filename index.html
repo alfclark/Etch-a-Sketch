@@ -9,36 +9,37 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <title>Etch a Sketch</title>
   </head>
   <body>
     <div class="flex-container">
-      <div class="title"><h1>Etch a Sketch</h1></div>
+      <div class="title"><h1>Etch-a-Sketch</h1></div>
       <div class="mode">
         Mode: Not coloring. Click on the board to start coloring.
       </div>
       <div class="content">
         <div class="board"></div>
-        <div class="buttons">
-          <button class="eraser">
-            <i class="fa-solid fa-eraser"></i>
-          </button>
-          <button onclick="resetBoard()">Reset</button>
+        <div class="config">
           <div class="color-pick">
-            <label for="favcolor">Select color:</label>
-            <input type="color" id="favcolor" name="favcolor" value="#000000" />
+            <label for="favcolor"><h3>Select Color:</h3></label>
+            <input type="color" id="favcolor" name="favcolor" value="#333333" />
+          </div>
+          <div class="buttons">
+            <button class="eraser">
+              <i class="fa-solid fa-eraser"></i>
+              Eraser
+            </button>
+            <button onclick="resetBoard()">
+              <i class="fa-solid fa-trash-can"></i>Reset
+            </button>
+          </div>
+          <div class="size">
+            <h3>Size:</h3>
+            <input id="sizeSlider" type="range" value="16" min="1" max="64" />
+            <div id="sizeValue" class="size-value">16 x 16</div>
           </div>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Size of Board"
-            value="16"
-            onchange="changeSize(this.value)"
-          />
-          <button>Set Size</button>
-        </div>
-        <div class="error">Input must be between 2 and 100</div>
       </div>
     </div>
     <script src="app.js"></script>
